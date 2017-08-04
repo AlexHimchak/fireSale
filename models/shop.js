@@ -4,9 +4,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    shopDescription: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     item: {
       type:DataTypes.STRING,
       allowNull: false
+      image: {
+        type: DataTypes.STRING,
+        default: "http://via.placeholder.com/350x350"
+        allowNull: false
+      }
       price: {
         type: DataTypes.Decimal,
         allowNull: false
