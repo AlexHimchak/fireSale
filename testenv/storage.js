@@ -7,21 +7,29 @@ var gcs = storage({
 	keyFilename: './config/Yefei-eee182317419.json'
 });
 
-gcs.createBucket('shop', function(err,bucket){
+// gcs.createBucket('shop', function(err,bucket){
+// 	if(!err){
+// 		//bucket created
+// 	}
+// });
+
+var bucket = gcs.bucket('yefei-8e467.appspot.com');
+
+var options = {
+	entity: 'allUsers',
+	role: gcs.acl.READER_ROLE
+};
+
+bucket.acl.add(options, function(err, aclObject){});
+
+bucket.upload('filenamehere', function(err,file){
 	if(!err){
-		//bucket created
+		//zebra.jps is now in bucket.
 	}
 });
 
-// var bucket = gcs.bucket('yefei-8e467.appspot');
+//will upload to https://storage.googleapis.com/yefei-8e467.appspot.com/"filenameHere"
 
-
-// //uploading
-// bucket.upload('/DemonArcherFGO.png', function(err,file){
-// 	if(!err){
-// 		//zebra.jps is now in bucket.
-// 	}
-// });
 
 
 // // Download a file from your bucket. 

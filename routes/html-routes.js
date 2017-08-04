@@ -14,5 +14,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/views/myshop.html"));
   });
 
-})
+  app.get("/testev", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/views/-testUplodaFormForImageUpload.html"));
+  });
+}
 
