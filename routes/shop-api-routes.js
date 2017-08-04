@@ -1,7 +1,10 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/shop", function(req, res) {
+  app.get("/api/shops", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
     db.Shop.findAll({
       include: [db.Item]
     }).then(function(dbShop) {
@@ -9,36 +12,27 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/shop/:id", function(req, res) {
+  app.get("/api/shops/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
     db.Shop.findOne({
-      include: [db.Item],
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.Item]
     }).then(function(dbShop) {
+      res.json(dbShops);
+    });
+  });
+
+  app.post("/api/shops", function(req, res) {
+    db.Shop.create(req.body).then(function(dbAuthor) {
       res.json(dbShop);
     });
   });
 
-  app.post("/api/shop", function(req, res) {
-    db.Shop.create(req.body).then(function(dbShop) {
-      res.json(dbShop);
-    });
-  });
-
-  app.put("/api/posts", function(req, res) {
-    db.Post.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-    .then(function(dbShop) {
-      res.json(dbShop);
-    });
-  });
-
-  app.delete("/api/shop/:id", function(req, res) {
+  app.delete("/api/shops/:id", function(req, res) {
     db.Shop.destroy({
       where: {
         id: req.params.id
@@ -49,3 +43,4 @@ module.exports = function(app) {
   });
 
 };
+

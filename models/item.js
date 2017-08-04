@@ -9,29 +9,28 @@ module.exports = function(sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.STRING,
-      default: "http://via.placeholder.com/350x350"
+      default: "http://via.placeholder.com/350x350",
       allowNull: false
-    }
+    },
     price: {
-      type: DataTypes.Decimal,
+      type: DataTypes.DECIMAL,
       allowNull: false
-    }
+    },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  }
   });
 
   Item.associate = function(models) {
-    Post.belongsTo(models.Shop, {
+    Item.belongsTo(models.Shop, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return Post;
+  return Item;
 };
 
 
