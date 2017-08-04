@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+<<<<<<< HEAD
 
     description:{
       type: DataTypes.STRING, 
@@ -25,6 +26,28 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.INTEGER,
           allowNull: false
         }
+=======
+    shopDescription: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    item: {
+      type:DataTypes.STRING,
+      allowNull: false
+      image: {
+        type: DataTypes.STRING,
+        default: "http://via.placeholder.com/350x350"
+        allowNull: false
+      }
+      price: {
+        type: DataTypes.Decimal,
+        allowNull: false
+      }
+      stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
+>>>>>>> b1e83834c10f1d57fe802b7331547282a5deb677
     }
 
   });
