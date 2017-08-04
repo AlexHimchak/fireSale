@@ -4,18 +4,29 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    description:{
+      type: DataTypes.STRING, 
+      allowNull: true
+    },
+
     item: {
       type:DataTypes.STRING,
       allowNull: false
-      price: {
-        type: DataTypes.Decimal,
-        allowNull: false
-      }
-      stock: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      }
+        description: {
+          type:DataTypes.STRING,
+          allowNull: true
+        },
+        price: {
+          type: DataTypes.Decimal,
+          allowNull: false
+        },
+        stock: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+        }
     }
+
   });
 
   //   Shop.associate = function(models) {
