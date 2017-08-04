@@ -62,98 +62,75 @@
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit
         </button>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">YOUR MATCH!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <hr>
         <footer class="footer">
             <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/AlexHimchak/FriendFinder">GitHub Repo</a></p>
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/AlexHimchak/fireSale">GitHub Repo</a></p>
             </div>
         </footer>
     </div>
 </body>
 <script type="text/javascript">
-// In this code, jQuery is used to "download" the data from our server
-// We then dynamically display this content in our table. This is very similar to the group projects you just completed.
-// It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
-
-$("#submit").on("click", function() {
-    var newFriend = {
-        name: $("#name").val().trim(),
-        role: $("#photo").val().trim(),
-        selection: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
-    };
-    console.log(newFriend);
-    var currentURL = window.location.origin;
-
-    $.post(currentURL + "/api/friends", newFriend)
-        .done(function(data) {
-            console.log(data);
-
-        });
-
-    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-        .done(function(friendData) {
-
-            // Here we then log the NYTData to console, where it will show up as an object.
-            console.log(friendData);
-            console.log(friendData[0].selection[2]);
-            var totalScore = 100;
-            var score = 0;
-            var a = [];
-            var j = friendData.length - 1;
-            // Loop through and display each of the customers
-            for (var i = 0; i < friendData.length - 1; i++) {
-
-                var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
-                var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
-                var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
-                var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
-                var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
-                var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
-                var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
-                var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
-                var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
-                var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
-                totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
-                a[i] = totalScore;
-            };
-            var index = 0;
-            var value = a[0];
-            for (var i = 1; i < a.length; i++) {
-                if (a[i] < value) {
-                    value = a[i];
-                    index = i;
-                }
-            }
-            console.log(a);
-            console.log(index);
-            $('#myModal').modal('show');
-            $(".modal-body").append(friendData[index].name);
-            $(".modal-body").append('<img src="' + friendData[index].photo + '" width="300" />');
 
 
+// $("#submit").on("click", function() {
+//     var newFriend = {
+//         name: $("#name").val().trim(),
+//         role: $("#photo").val().trim(),
+//         selection: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+//     };
+//     console.log(newFriend);
+//     var currentURL = window.location.origin;
+
+//     $.post(currentURL + "/api/friends", newFriend)
+//         .done(function(data) {
+//             console.log(data);
+
+//         });
+
+//     $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+//         .done(function(friendData) {
+
+//             // Here we then log the NYTData to console, where it will show up as an object.
+//             console.log(friendData);
+//             console.log(friendData[0].selection[2]);
+//             var totalScore = 100;
+//             var score = 0;
+//             var a = [];
+//             var j = friendData.length - 1;
+//             // Loop through and display each of the customers
+//             for (var i = 0; i < friendData.length - 1; i++) {
+
+//                 var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
+//                 var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
+//                 var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
+//                 var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
+//                 var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
+//                 var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
+//                 var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
+//                 var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
+//                 var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
+//                 var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
+//                 totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
+//                 a[i] = totalScore;
+//             };
+//             var index = 0;
+//             var value = a[0];
+//             for (var i = 1; i < a.length; i++) {
+//                 if (a[i] < value) {
+//                     value = a[i];
+//                     index = i;
+//                 }
+//             }
+//             console.log(a);
+//             console.log(index);
+//             $('#myModal').modal('show');
+//             $(".modal-body").append(friendData[index].name);
+//             $(".modal-body").append('<img src="' + friendData[index].photo + '" width="300" />');
 
 
-        });
-});
+//         });
+// });
 </script>
 <style type="text/css">
 .container {
