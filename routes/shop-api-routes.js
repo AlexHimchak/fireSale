@@ -26,6 +26,18 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/posts", function(req, res) {
+    db.Post.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+    .then(function(dbShop) {
+      res.json(dbShop);
+    });
+  });
+
   app.delete("/api/shop/:id", function(req, res) {
     db.Shop.destroy({
       where: {
