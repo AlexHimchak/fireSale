@@ -15,7 +15,7 @@
             <h2>Fire SALE</h2>
             <hr>
             <h3>Your company name</h3>
-            <input type="text" name="" id="name" class="form-control" required>
+            <input type="text" name="" id="name" class="form-control" placeholder="Name of Company" required>
             <h3>Description of Company</h3>
             <textarea class="form-control" rows="3" id="companyDescription" placeholder="Description"></textarea>
             <hr>
@@ -130,74 +130,41 @@
     </div>
 </body>
 <script type="text/javascript">
-// $("#submit").on("click", function() {
-//     var newFriend = {
-//         name: $("#name").val().trim(),
-//         role: $("#photo").val().trim(),
-//         selection: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
-//     };
-//     console.log(newFriend);
-//     var currentURL = window.location.origin;
+$("#submit").on("click", function() {
+    var newStore = {
+        name: $("#name").val().trim(),
+        role: $("#photo").val().trim(),
+        image1: $("#image1")
+        price1: $("#price1").val()
+        inventory1: $("#inventory1").val();
+        image2: $("#image2");
+        price2: $("#price2").val();
+        inventory2: $("#inventory2").val();
+        image3: $("#image3");
+        price3: $("#price3").val();
+        inventory3: $("#inventory3").val();
+        image4: $("#image4");
+        price4: $("#price4").val();
+        inventory4: $("#inventory4").val();
+    };
+    console.log(newStore);
+    var currentURL = window.location.origin;
 
-//     $.post(currentURL + "/api/friends", newFriend)
-//         .done(function(data) {
-//             console.log(data);
+    $.post(currentURL + "/api/shops", newStore)
+        .done(function(data) {
+            console.log(data);
 
-//         });
-
-//     $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-//         .done(function(friendData) {
-
-//             // Here we then log the NYTData to console, where it will show up as an object.
-//             console.log(friendData);
-//             console.log(friendData[0].selection[2]);
-//             var totalScore = 100;
-//             var score = 0;
-//             var a = [];
-//             var j = friendData.length - 1;
-//             // Loop through and display each of the customers
-//             for (var i = 0; i < friendData.length - 1; i++) {
-
-//                 var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
-//                 var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
-//                 var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
-//                 var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
-//                 var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
-//                 var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
-//                 var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
-//                 var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
-//                 var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
-//                 var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
-//                 totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
-//                 a[i] = totalScore;
-//             };
-//             var index = 0;
-//             var value = a[0];
-//             for (var i = 1; i < a.length; i++) {
-//                 if (a[i] < value) {
-//                     value = a[i];
-//                     index = i;
-//                 }
-//             }
-//             console.log(a);
-//             console.log(index);
-//             $('#myModal').modal('show');
-//             $(".modal-body").append(friendData[index].name);
-//             $(".modal-body").append('<img src="' + friendData[index].photo + '" width="300" />');
-//      background: url('http://wallpapercave.com/wp/TN0iVKO.jpg') !important;
-
-
-//         });
-// });
+        });
+});
 </script>
 <style type="text/css">
 body {
     background: url('https://s-media-cache-ak0.pinimg.com/originals/8f/28/e6/8f28e6ed576544805406f9c09ad950e6.jpg') no-repeat center center fixed!important;
     color: black !important;
 }
+
 .form-control {
-  background-color: #ffdab3
-;
+    background-color: #ffdab3;
 }
 </style>
 
