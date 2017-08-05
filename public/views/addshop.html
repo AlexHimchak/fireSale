@@ -17,7 +17,7 @@
             <h3>Your company name</h3>
             <input type="text" name="" id="name" class="form-control" placeholder="Name of Company" required>
             <h3>Description of Company</h3>
-            <textarea class="form-control" rows="3" id="companyDescription" placeholder="Description"></textarea>
+            <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
             <hr>
             <div class="row">
                 <div class="col-md-6">
@@ -133,7 +133,7 @@
 $("#submit").on("click", function() {
     var newStore = {
         name: $("#name").val().trim(),
-        role: $("#photo").val().trim(),
+        description: $("#description").val().trim(),
         image1: $("#image1")
         price1: $("#price1").val()
         inventory1: $("#inventory1").val();
