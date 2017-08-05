@@ -58,7 +58,8 @@ module.exports = function(app) {
     });
   });
 
-
+//This is to be merfed with the main POST method;
+//currently this is for uploading to cloud storage and returns a url address for where it is located
 app.post("/uploadimg", multer.single('image'), function(req, res, next){
 
   if (!req.file) {
