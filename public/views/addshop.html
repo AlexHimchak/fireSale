@@ -17,11 +17,20 @@
             <h3>Your company name</h3>
             <input type="text" name="" id="name" class="form-control" placeholder="Name of Company" required>
             <h3>Description of Company</h3>
+<<<<<<< HEAD
             <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
+=======
+            <textarea class="form-control" rows="3" id="Description" placeholder="Description"></textarea>
+>>>>>>> 5c426ef3238e6e72fa1c28bbe7f351171bd183e3
             <hr>
             <div class="row">
                 <div class="col-md-6">
                     <h3><strong>Item 1</strong></h3>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-offset-4">
+                            <input type="text" class="form-control" placeholder="Item Name" id="itemName1">
+                        </div>
+                    </div>
                     <h4>Upload an image of the item then type in the price and inventory.</h4>
                     <div class="row">
                         <div class="col-xs-4 col-md-offset-4">
@@ -45,6 +54,11 @@
                 </div>
                 <div class="col-md-6">
                     <h3><strong>Item 2</strong></h3>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-offset-4">
+                            <input type="text" class="form-control" placeholder="Item Name" id="itemName2">
+                        </div>
+                    </div>
                     <h4>Upload an image of the item then type in the price and inventory.</h4>
                     <div class="row">
                         <div class="col-xs-4 col-md-offset-4">
@@ -70,6 +84,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3><strong>Item 3</strong></h3>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-offset-4">
+                            <input type="text" class="form-control" placeholder="Item Name" id="itemName3">
+                        </div>
+                    </div>
                     <h4>Upload an image of the item then type in the price and inventory.</h4>
                     <div class="row">
                         <div class="col-xs-4 col-md-offset-4">
@@ -93,6 +112,11 @@
                 </div>
                 <div class="col-md-6">
                     <h3><strong>Item 4</strong></h3>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-offset-4">
+                            <input type="text" class="form-control" placeholder="Item Name" id="itemName4">
+                        </div>
+                    </div>
                     <h4>Upload an image of the item then type in the price and inventory.</h4>
                     <div class="row">
                         <div class="col-xs-4 col-md-offset-4">
@@ -133,6 +157,7 @@
 $("#submit").on("click", function() {
     var newStore = {
         name: $("#name").val().trim(),
+<<<<<<< HEAD
         description: $("#description").val().trim(),
         image1: $("#image1")
         price1: $("#price1").val()
@@ -146,6 +171,33 @@ $("#submit").on("click", function() {
         image4: $("#image4");
         price4: $("#price4").val();
         inventory4: $("#inventory4").val();
+=======
+        description: $("#description").val().trim()
+    };
+    var item1 = {    
+        itemName: $("#itemName1")
+        image: $("#image1")
+        price: $("#price1").val()
+        inventory: $("#inventory1").val();
+    };
+     var item2 = {    
+        itemName: $("#itemName2")
+        image: $("#image2")
+        price: $("#price2").val()
+        inventory: $("#inventory2").val();
+    };
+     var item3 = {    
+        itemName: $("#itemName3")
+        image: $("#image3")
+        price: $("#price3").val()
+        inventory: $("#inventory3").val();
+    };
+     var item4 = {    
+        itemName: $("#itemName4")
+        image: $("#image4")
+        price: $("#price4").val()
+        inventory: $("#inventory4").val();
+>>>>>>> 5c426ef3238e6e72fa1c28bbe7f351171bd183e3
     };
     console.log(newStore);
     var currentURL = window.location.origin;
