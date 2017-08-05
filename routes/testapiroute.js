@@ -1,4 +1,4 @@
-var storage = require("./storage.js");
+var bucket = require("../config/storage.js");
 const Multer = require('multer');
 const multer = Multer({
   storage: Multer.MemoryStorage,
@@ -10,9 +10,6 @@ const multer = Multer({
 
 module.exports = function(app) {
 
-
-  //image upload
-  app.post('/uploadimage', (req, res) =>{
 
 function sendUploadToGCS (req, res, next) {
   if (!req.file) {
@@ -41,9 +38,5 @@ function sendUploadToGCS (req, res, next) {
 
   stream.end(req.file.buffer);
 }
-
-
-
-  });
 
 };

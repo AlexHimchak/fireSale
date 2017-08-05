@@ -19,18 +19,15 @@
           </center>
     </div>
 
-<form method="POST", enctype="multipart/form-data" action="/uploadimage">
+<form method="POST", enctype="multipart/form-data" action="/uploadimg">
 <label for="image">Image
 </label>
 <input type="file" name="image" id ="image">
-</form>
 <button type="submit" id="submit">button</button>
+</form>
 
 </body>
 <script type="text/javascript">
-// In this code, jQuery is used to "download" the data from our server
-// We then dynamically display this content in our table. This is very similar to the group projects you just completed.
-// It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
 
 $("#submit").on("click", function() {
     $.post($("#image").val())

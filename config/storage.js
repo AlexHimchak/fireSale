@@ -15,4 +15,4 @@ var options = {
 bucket.acl.add(options, function(err, aclObject){});
 
 
-module.exports(bucket);
+module.exports = bucket;

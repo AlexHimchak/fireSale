@@ -1,4 +1,12 @@
 var db = require("../models");
+var bucket = require("../config/storage.js");
+var Multer = require("multer");
+var multer =  Multer({
+  storage: Multer.MemoryStorage,
+  limits: {
+    fileSize: 5 * 1024 * 1024 //No larger than 5 mb
+  }
+});
 
 
 module.exports = function(app) {
