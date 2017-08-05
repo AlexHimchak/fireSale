@@ -87,4 +87,11 @@ app.post("/uploadimg", multer.single('image'), function(req, res, next){
 }
 )
 
+function tester() {
+   db.Shop.findAll({
+      include: [db.Item]
+    }).then(function(dbShop) {
+      console.log(dbShop);
+})}
+
 };
