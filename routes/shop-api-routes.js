@@ -1,5 +1,6 @@
 var db = require("../models");
 var bucket = require("../config/storage.js");
+var format = require('util').format;
 var Multer = require("multer");
 var multer =  Multer({
   storage: Multer.MemoryStorage,
@@ -58,33 +59,30 @@ module.exports = function(app) {
   });
 
 
-app.post("/uploadimg", function(req, res, next){
+app.post("/uploadimg", multer.single('image'), function(req, res, next){
 
   if (!req.file) {
     return next();
   }
 
-  const gcsname = Date.now() + req.file.originalname;
-  const file = bucket.file(gcsname);
+  const blob = bucket.file(req.file.originalname);
+  const blobStream = blob.createWriteStream();
 
-  const stream = file.createWriteStream({
-    metadata: {
-      contentType: req.file.mimetype
-    }
-  });
-
-  stream.on('error', (err) => {
+  blobStream.on('error', (err) => {
     req.file.cloudStorageError = err;
     next(err);
   });
 
-  stream.on('finish', () => {
-    req.file.cloudStorageObject = gcsname;
-    req.file.cloudStoragePublicUrl = getPublicUrl(gcsname);
+  blobStream.on('finish', () => {
+
+   const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+    res.status(200).send(publicUrl);
+    
+    console.log(publicUrl);
     next();
   });
 
-  stream.end(req.file.buffer);
+  blobStream.end(req.file.buffer);
 }
 )
 
