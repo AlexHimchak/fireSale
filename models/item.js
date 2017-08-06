@@ -7,11 +7,11 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    image: {
-      type: DataTypes.STRING,
-      default: "http://via.placeholder.com/350x350",
-      allowNull: false
-    },
+    // image: {
+    //   type: DataTypes.STRING,
+    //   default: "http://via.placeholder.com/350x350",
+    //   allowNull: false
+    // },
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false
