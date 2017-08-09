@@ -149,61 +149,69 @@
         </footer>
     </div>
 </body>
+<!-- <script src="/js/addshop.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 $("#submit").on("click", function() {
     var newStore = {
-        name: $("#name").val().trim(),
-<<<<<<< HEAD
-        description: $("#description").val().trim(),
-        image1: $("#image1")
-        price1: $("#price1").val()
-        inventory1: $("#inventory1").val();
-        image2: $("#image2");
-        price2: $("#price2").val();
-        inventory2: $("#inventory2").val();
-        image3: $("#image3");
-        price3: $("#price3").val();
-        inventory3: $("#inventory3").val();
-        image4: $("#image4");
-        price4: $("#price4").val();
-        inventory4: $("#inventory4").val();
-=======
-        description: $("#description").val().trim()
+        shopName: $("#name").val().trim(),
+        shopDescription: $("#description").val().trim()
     };
-    var item1 = {    
-        itemName: $("#itemName1")
-        image: $("#image1")
-        price: $("#price1").val()
-        inventory: $("#inventory1").val();
-    };
-     var item2 = {    
-        itemName: $("#itemName2")
-        image: $("#image2")
-        price: $("#price2").val()
-        inventory: $("#inventory2").val();
-    };
-     var item3 = {    
-        itemName: $("#itemName3")
-        image: $("#image3")
-        price: $("#price3").val()
-        inventory: $("#inventory3").val();
-    };
-     var item4 = {    
-        itemName: $("#itemName4")
-        image: $("#image4")
-        price: $("#price4").val()
-        inventory: $("#inventory4").val();
->>>>>>> 5c426ef3238e6e72fa1c28bbe7f351171bd183e3
-    };
+    
     console.log(newStore);
     var currentURL = window.location.origin;
 
     $.post(currentURL + "/api/shops", newStore)
+    .done(function(data) {
+        console.log(data);
+        console.log("shop id: " + data.id);
+        var item1 = {    
+            itemTitle: $("#itemName1").val(),
+            // image: $("#image1"),
+            price: $("#price1").val(),
+            stock: $("#Inventory1").val(),
+            ShopId: data.id
+        };
+         var item2 = {    
+            itemTitle: $("#itemName2").val(),
+            // image: $("#image2"),
+            price: $("#price2").val(),
+            stock: $("#Inventory2").val(),
+            ShopId: data.id
+        };
+         var item3 = {    
+            itemTitle: $("#itemName3").val(),
+            // image: $("#image3"),
+            price: $("#price3").val(),
+            stock: $("#Inventory3").val(),
+            ShopId: data.id
+        };
+         var item4 = {    
+            itemTitle: $("#itemName4").val(),
+            // image: $("#image4"),
+            price: $("#price4").val(),
+            stock: $("#Inventory4").val(),
+            ShopId: data.id
+        };
+        $.post(currentURL + "/api/items", item1)
         .done(function(data) {
             console.log(data);
-
         });
+        $.post(currentURL + "/api/items", item2)
+        .done(function(data) {
+            console.log(data);
+        });
+        $.post(currentURL + "/api/items", item3)
+        .done(function(data) {
+            console.log(data);
+        });
+        $.post(currentURL + "/api/items", item4)
+        .done(function(data) {
+            console.log(data);
+        });
+    })
+
 });
+
 </script>
 <style type="text/css">
 body {

@@ -4,14 +4,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    description:{
-      type: DataTypes.STRING, 
-      allowNull: true
-    }
-
-});
-
+    shopDescription: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
 
   Shop.associate = function(models) {
     Shop.hasMany(models.Item, {
