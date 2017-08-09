@@ -1,6 +1,7 @@
 var db = require("../models");
 var bucket = require("../config/storage.js");
 var format = require('util').format;
+var path = require("path");
 var Multer = require("multer");
 var multer =  Multer({
   storage: Multer.MemoryStorage,
@@ -32,7 +33,7 @@ module.exports = function(app) {
       },
       include: [db.Item]
     }).then(function(dbShop) {
-      res.json(dbShop);
+      res.sendFile(path.join(__dirname, '../public/views', 'myshop.html'), dbShop)
     });
   });
 
