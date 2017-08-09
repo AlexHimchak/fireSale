@@ -1,3 +1,4 @@
+module.exports = function(sequelize, DataTypes) {
   var Shop = sequelize.define("Shop", {
     shopName: {
       type: DataTypes.STRING,
@@ -15,4 +16,4 @@
     });
   };
   return Shop;
-};
+}

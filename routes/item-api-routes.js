@@ -5,10 +5,11 @@ module.exports = function(app) {
   app.get("/api/items", function(req, res) {
     var query = {};
     if (req.query.shop_id) {
-      query.AuthorId = req.query.author_id;
+      query.ShopId = req.query.shop_id;
     }
     db.Item.findAll({
       where: query,
+      include: [db.Shop]
     }).then(function(dbItem) {
       res.json(dbItem);
     });
