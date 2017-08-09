@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-<<<<<<< HEAD
     "@google-cloud/datastore": "^1.1.0",
     "@google-cloud/storage": "^1.2.1",
-=======
->>>>>>> source/master
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "multer": "^1.3.0",
@@ -21,28 +18,22 @@
     "jasmine-core": "^2.7.0",
     "karma": "^1.7.0",
     "karma-browserify": "^5.1.1",
-<<<<<<< HEAD
     "karma-chai": "^0.1.0",
-=======
->>>>>>> source/master
     "karma-chrome-launcher": "^1.0.1",
     "karma-commonjs": "^1.0.0",
     "karma-html-reporter": "^0.2.7",
     "karma-htmlfile-reporter": "^0.3.4",
     "karma-jasmine": "^1.1.0",
-<<<<<<< HEAD
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",
     "karma-webpack": "^2.0.4",
     "mocha": "^3.5.0",
     "watchify": "^3.9.0",
-    "webpack": "^3.4.1"
-=======
+    "webpack": "^3.4.1",
     "karma-mocha": "^1.1.1",
     "karma-mocha-reporter": "^2.2.3",
     "mocha": "^3.5.0",
     "watchify": "^3.9.0"
->>>>>>> source/master
   },
   "scripts": {
     "test": "mocha"

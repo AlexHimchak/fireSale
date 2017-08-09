@@ -32,13 +32,21 @@ module.exports = function(app) {
       },
       include: [db.Item]
     }).then(function(dbShop) {
-      res.json(dbShops);
+      res.json(dbShop);
     });
   });
 
   app.post("/api/shops", function(req, res) {
-    db.Shop.create(req.body).then(function(dbAuthor) {
-      res.json(dbShop);
+    db.Shop.create({
+      shopName: req.body.name,
+      description: req.body.description
+      }).then(function(dbShop) {
+        db.Item.create({
+
+
+        }).then(function(data){
+          res.json(data);
+        })
     });
   });
 
@@ -81,12 +89,23 @@ app.post("/uploadimg", multer.single('image'), function(req, res, next){
 }
 )
 
-function tester() {
-   db.Shop.findAll({
-      include: [db.Item]
-    }).then(function(dbShop) {
-      console.log(dbShop);
-})}
+//for mocha tests
+var seed = function(){
+      db.Shop.create({
+      shopName: "test",
+      description: "test"
+      }).then(function(dbShop) {
+        db.Item.create({
+          itemTitle: "test",
+          image : "REEE",
+          price : 12.32,
+          stock: 2
+
+        }).then(function(data){
+          res.json(data);
+        })
+    });
+}
+seed();
 
 };
-

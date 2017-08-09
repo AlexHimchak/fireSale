@@ -11,9 +11,9 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="text-center"> </h1>
+            <h1 class="text-center"><div id="shopname"></div></h1>
             <hr>
-            <h2 class="text-center"></h2>
+            <h2 class="text-center"><div id="shopdescription"></div></h2>
             <br>
 
         </div>
@@ -44,5 +44,9 @@ body {
     color: white;
 }
 </style>
+
+<script>
+    $("#shopname").append($.get(shop.name))
+</script>
 
 </html>

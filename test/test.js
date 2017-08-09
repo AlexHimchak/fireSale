@@ -1,11 +1,11 @@
-var should = require("mocha").should;
-var express = require("express");
-var app = express();
-var da = require("../routes/shop-api-routes.js")(app)
+// var should = require("mocha").should;
+// var express = require("express");
+// var app = express();
+// var tester = require("../routes/shop-api-routes.js")(app)
 
-describe("api routes", function(){
+// describe("api routes", function(){
 
-	it("should get index", function(){
-		da.tester();
-	});
-});
+// 	it("should get index", function(){
+// 		tester();
+// 	});
+// });
