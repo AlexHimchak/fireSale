@@ -1,5 +1,14 @@
 
 var db = require("../models");
+var bucket = require("../config/storage.js");
+var format = require('util').format;
+const Multer = require('multer');
+const multer = Multer({
+  storage: Multer.MemoryStorage,
+  limits: {
+    fileSize: 5 * 1024 * 1024 //No larger than 5 mb
+  }
+});
 
 module.exports = function(app) {
   app.get("/api/items", function(req, res) {
@@ -15,19 +24,48 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/items", function(req, res) {
-    console.log(req.body);
-    db.Item.create(req.body).then(function(dbItem) {
-      res.json(dbItem);
+  app.post("/uploadimg", multer.single('image'), function(req, res, next){
+    if (!req.file) {return next();}
+
+ console.log(req.body);
+    const blob = bucket.file(req.file.originalname);
+    const blobStream = blob.createWriteStream();
+      blobStream.on('error', (err) => {
+      req.file.cloudStorageError = err;
+      next(err);
     });
+    blobStream.on('finish', () => {
+      console.log(req.body)
+    const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+      res.status(200).send(publicUrl);
+      console.log(publicUrl);
+      next();
+
+        // db.Item.create({
+        //   itemTitle: req.body.itemName,
+        //   image: publicUrl,
+        //   price: req.body.price,
+        //   stock: req.body.inventory,
+        //   ShopId: req.body.identity
+
+        // })
+
+    });
+
+  blobStream.end(req.file.buffer);
+
   });
+
+  function next(){
+    console.log("hi")};
+
 
   app.put("/api/items", function(req, res) {
     db.Item.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          ShopId: req.body.id
         }
       }).then(function(dbItem) {
         res.json(dbItem);
