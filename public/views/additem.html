@@ -22,7 +22,7 @@
 
 
             <form id= "imageup" method="POST", enctype="multipart/form-data" action="/uploadimg">
-                    <h3><strong>Item 1</strong></h3>
+                   <!--  <h3><strong>Item 1</strong></h3>
                     <div id="identity" value="0"></div>
                     <div class="row">
                         <div class="col-xs-4 col-md-offset-4">
@@ -38,10 +38,14 @@
                         <div class="col-xs-4 col-md-offset-4">
                             <input type="text" class="form-control upper" placeholder="Inventory" id="Inventory">
                         </div>
-                    </div>
-                    <h4>Upload an image of the item then type in the price and inventory.</h4>
-                        <label for="image">Image
-                        </label>
+                    </div> -->
+                    <!-- <h4>Upload an image of the item then type in the price and inventory.</h4> -->
+                        <!-- <label for="image">Image -->
+                        <!-- </label> -->
+                        <input type="hidden" name="identity" id="identity" value="0">
+                        <input type="text" name= "itemName" id="itemName" placeholder="Item Name">
+                        <input type="text" name= "price" id= "price" placeholder="price">
+                        <input type="text" name= "Inventory" id= "Inventory" placeholder="stock">
                         <input type="file" name="image" id ="image" class="upper">
                 <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit
                 </button>
@@ -83,16 +87,16 @@ console.log(indentifier)
         console.log(data)
     })
 
-    $("#submit").on('click', function(){
-        var item = $("#itemName").val();
-        var file = $("#image");
-        var price = $("#price").val();
-        var stock = $("#Inventory").val();
+//     $("#submit").on('click', function(){
+//         var item = $("#itemName").val();
+//         var file = $("#image");
+//         var price = $("#price").val();
+//         var stock = $("#Inventory").val();
 
-        $.post("/uploadimg", item, price, stock).then(function(data){
-        $.post("/uploadimg", file)
-    })
-})
+//         $.post("/uploadimg", item, price, stock).then(function(data){
+//         $.post("/uploadimg", file)
+//     })
+// })
 
 
 

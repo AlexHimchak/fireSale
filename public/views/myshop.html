@@ -61,7 +61,7 @@ $.ajax({ url: "/api/shops/" + index, method: "GET" })
         // $("#item4").append(shopData[0].Items[3].itemTitle);
         $("#name").append(shopData.shopName);
         $("#description").append(shopData.shopDescription);
-        $("#pic1").append('<img src="' + "https://d29vij1s2h2tll.cloudfront.net/~/media/images/taco-bell/products/default/23732_combos_quesarito_combo_300x300.jpg?w=300&h=300" + '" width="300" height="300"/>');
+        $("#pic1").append('<img src="' + shopData.Items[0].image + '" width="300" height="300"/>');
         $("#item1").append(shopData.Items[0].itemTitle);
         $("#pic2").append('<img src="' + "http://www.ripoffreport.com/d/r1147292-pmfs7z-csznobnnag/pdp_soft_taco.png" + '" width="300" height="300"/>');
         $("#item2").append(shopData.Items[1].itemTitle);

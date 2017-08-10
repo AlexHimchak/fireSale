@@ -26,8 +26,6 @@ module.exports = function(app) {
 
   app.post("/uploadimg", multer.single('image'), function(req, res, next){
     if (!req.file) {return next();}
-
- console.log(req.body);
     const blob = bucket.file(req.file.originalname);
     const blobStream = blob.createWriteStream();
       blobStream.on('error', (err) => {
@@ -35,21 +33,18 @@ module.exports = function(app) {
       next(err);
     });
     blobStream.on('finish', () => {
-      console.log(req.body)
     const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
       res.status(200).send(publicUrl);
       console.log(publicUrl);
+      console.log(req.body)
+        db.Item.create({
+          itemTitle: req.body.itemName,
+          image: publicUrl,
+          price: req.body.price,
+          stock: req.body.Inventory,
+          ShopId: req.body.identity
+        })
       next();
-
-        // db.Item.create({
-        //   itemTitle: req.body.itemName,
-        //   image: publicUrl,
-        //   price: req.body.price,
-        //   stock: req.body.inventory,
-        //   ShopId: req.body.identity
-
-        // })
-
     });
 
   blobStream.end(req.file.buffer);
