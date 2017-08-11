@@ -10,7 +10,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/views/addshop.html"));
   });
 
-  app.get("/myshop", function(req, res) {
+  app.get("/myshop/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/myshop.html"));
   });
 }
