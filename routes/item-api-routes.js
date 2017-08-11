@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/uploadimg", multer.single('image'), function(req, res, next){
+  app.post("/api/items", multer.single('image'), function(req, res, next){
     if (!req.file) {return next();}
     const blob = bucket.file(req.file.originalname);
     const blobStream = blob.createWriteStream();
@@ -48,8 +48,7 @@ module.exports = function(app) {
     });
 
   blobStream.end(req.file.buffer);
-
-  });
+  })
 
   function next(){
     console.log("hi")};
