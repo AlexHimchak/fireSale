@@ -6,7 +6,9 @@
     <title>Home</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="/views/js/index.js"></script>
+
 </head>
 
 <body>
@@ -28,20 +30,19 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p><a href="/api/shops">API Link</a> | <a href="https://github.com/AlexHimchak/FriendFinder">GitHub Repo</a></p>
+                <p><a href="/api/shops">API Link</a> | <a href="https://github.com/AlexHimchak/fireSale">GitHub Repo</a></p>
             </div>
         </footer>
     </div>
 </body>
-<!-- hhttp://blacktie.co/demo/premium/dashio/frontend/demos/sliderbg_02.png
- --><style type="text/css">
+<style type="text/css">
 body {
     background: url('https://www.pixelstalk.net/wp-content/uploads/2016/04/Download-fire-wallpaper-HD.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
 }
 .jumbotron{
     background: url("http://www.zarofil.com/i/2017/06/red-and-blue-fire-wallpapers-hd-resolution.jpg") !important;
-    background-size: auto 100% !important;
+    background-size: cover !important;
     color:coral;
 }
 .list-group-item{
@@ -57,27 +58,6 @@ body {
     font-style: italic;
 }
 </style>
-<script type="text/javascript">
-
-$.ajax({ url: "/api/shops", method: "GET" })
-    .done(function(shopData) {
-        console.log(shopData);
-        var shopArray = shopData;
-
-        var shopList = $('#shop-list');
-        shopArray.forEach(function(shop) {
-            console.log(shop);
-            var idLink = "/myshop/" + shop.id;
-            var adLink = "/additem/" + shop.id;
-            var shopRow = $("<li class='list-group-item'>")
-            shopRow.append("<span class='shop-name'>" + shop.shopName + " </span>");
-            shopRow.append("<span class='shop-description'>" + shop.shopDescription + " </span>");
-            shopRow.append("<a href=" + idLink + ">Shop Now </a>");
-            shopRow.append("<a href=" + adLink + ">Add Item</a>");
-            shopList.append(shopRow);
-        });
-
-    });
-</script>
+<!--  -->
 
 </html>
