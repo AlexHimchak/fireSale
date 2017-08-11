@@ -34,7 +34,7 @@ module.exports = function(app) {
     });
     blobStream.on('finish', () => {
     const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
-      res.status(200).send(publicUrl);
+      res.redirect("back");
       console.log(publicUrl);
       console.log(req.body)
         db.Item.create({
