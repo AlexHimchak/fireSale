@@ -16,9 +16,13 @@ $.ajax({ url: "/api/shops/" + idnum, method: "GET" })
             var container = $("<div>").addClass("row col-md-6 text-center")
             var name = $("<div>").text(item.itemTitle);
             var pic = $("<div>").html('<img src="' + item.image + '" width="300" height="300"/> <br><br><br>')
+            var price = $("<div>").text("$" + item.price);
 
-            container.append(name);
+
             container.append(pic);
+            container.append(name);
+            container.append(price);
+
             $("#holder").append(container)
 
         })

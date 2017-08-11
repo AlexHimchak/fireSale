@@ -38,6 +38,8 @@ $(document).on('ready', function() {
 
 
     });
+        //    window.location.href = "/";
+
 });
 // $("#submit").on("click", function() {
 //     var newStore = {
