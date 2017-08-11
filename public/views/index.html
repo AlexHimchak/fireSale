@@ -46,11 +46,12 @@ body {
 }
 </style>
 <script type="text/javascript">
+
 $.ajax({ url: "/api/shops", method: "GET" })
     .done(function(shopData) {
         console.log(shopData);
         var shopArray = shopData;
-        
+
         var shopList = $('#shop-list');
         shopArray.forEach(function(shop) {
             console.log(shop);
@@ -61,6 +62,7 @@ $.ajax({ url: "/api/shops", method: "GET" })
             shopRow.append("<a href=" + idLink + ">Shop Now</a>");
             shopList.append(shopRow);
         });
+
     });
 </script>
 
