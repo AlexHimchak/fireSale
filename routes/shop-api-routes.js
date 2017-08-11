@@ -35,8 +35,11 @@ module.exports = function(app) {
 
   app.post("/api/shops", function(req, res) {
     console.log(req.body);
+    var idnum = 0;
     db.Shop.create(req.body).then(function(dbShop) {
+      idnum = dbShop.dataValues.id;
     });
+    window.location.href = "/additem/" + idnum
   })
 
   app.delete("/api/shops/:id", function(req, res) {

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Survey</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/views/js/additem.js"></script>
 </head>
-
 <body>
     <div class="container">
         <center>
@@ -19,27 +18,20 @@
             <hr>
             <div class="row">
                 <div class="col-md-12">
-
-
-            <form id= "imageup" method="POST", enctype="multipart/form-data" action="/api/items">
-                        <input type="hidden" name="identity" id="identity" value="0">
-                        <input type="text" name= "itemName" id="itemName" placeholder="Item Name">
-                        <input type="text" name= "price" id= "price" placeholder="price">
-                        <input type="text" name= "Inventory" id= "Inventory" placeholder="stock">
-                        <input type="file" name="image" id ="image" class="upper">
-                <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit and Add more items!
-                </button>
-
-    
-             </form>
+                <form id= "imageup" method="POST", enctype="multipart/form-data" action="/api/items">
+                            <input type="hidden" name="identity" id="identity" value="0">
+                            <input type="text" name= "itemName" id="itemName" placeholder="Item Name">
+                            <input type="text" name= "price" id= "price" placeholder="price">
+                            <input type="text" name= "Inventory" id= "Inventory" placeholder="stock">
+                            <input type="file" name="image" id ="image" class="upper">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit and Add more items!
+                    </button>
+                 </form>
                 </div>
             </div>
-            <br>
-            <br>
+            <br><br>
         </center>
-        <!-- Submit Button -->
         <input type="button" value="Finished! Redirect me to my store!" class="btn btn-primary btn-lg btn-block" id="redirect" onclick="return btn_click()"><i class="fa fa-check-circle" aria-hidden="true"></i> 
-
         <hr>
         <footer class="footer">
             <div class="container">
@@ -49,33 +41,6 @@
     </div>
 </body>
 
-<script type="text/javascript">
-
-var href = location.href;
-var idnum = (href.match(/([^\/]*)\/*$/)[1]);
-var indentifier = "/api/shops/" + idnum;
-console.log(idnum)
-console.log(indentifier)
-
-    $("#identity").val(idnum);
-
-
-
-    $.get(indentifier).then(function(data){
-        $("#shopName").append(JSON.stringify(data.shopName));
-        $("#description").append(JSON.stringify(data.shopDescription));
-        console.log(data)
-    })
-
-
-$("#redirect").on('click', function(){
-    window.location.href= "/myshop/" + idnum;
-});
-    
-
-
-
-</script>
 <style type="text/css">
 body {
     background: url('https://s-media-cache-ak0.pinimg.com/originals/8f/28/e6/8f28e6ed576544805406f9c09ad950e6.jpg') no-repeat center center fixed!important;

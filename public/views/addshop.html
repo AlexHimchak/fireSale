@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Survey</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/views/js/addshop.js"></script>
 </head>
-
 <body>
     <div class="container">
         <center>
@@ -18,12 +17,9 @@
             <input type="text" name="" id="name" class="form-control" placeholder="Name of Company" required>
             <h3>Description of Company</h3>
             <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
-            <hr>
-           
-            <br>
-            <br>
+            <hr>   
+            <br><br>
         </center>
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit
         </button>
         <hr>
@@ -34,41 +30,12 @@
         </footer>
     </div>
 </body>
-<!-- <script src="/js/addshop.js" type="text/javascript"></script> -->
-<script type="text/javascript">
-$("#submit").on("click", function() {
-    var itemurl; 
-    var newStore = {
-        shopName: $("#name").val().trim(),
-        shopDescription: $("#description").val().trim()
-    };
 
-    $.post("/api/shops", newStore)
-    .done(function(data) {
-        console.log(data);
-        console.log("--------------------shop id: " + data.id);
-        itemurl = "/api/items" + data.id;
-            var item = {    
-            itemTitle: $("#itemName").val(),
-            image: $("#image"),
-            price: $("#price").val(),
-            stock: $("#Inventory").val(),
-            ShopId: data.id
-        };
-        $.post(itemurl, item).done(function(da){
-            console.log(da)
-        });
-    });
-
-});
-
-</script>
 <style type="text/css">
 body {
     background: url('https://s-media-cache-ak0.pinimg.com/originals/8f/28/e6/8f28e6ed576544805406f9c09ad950e6.jpg') no-repeat center center fixed!important;
     color: black !important;
 }
-
 .form-control {
     background-color: #ffdab3;
 }
