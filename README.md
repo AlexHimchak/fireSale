@@ -10,7 +10,7 @@ Platform for users to create and host online stores
 
 ## Slides
 
-* [Google Slide]
+* [Google Slide] https://docs.google.com/presentation/d/1efu1AlFivCSQQXxE0UT4JkKlkhPIGBW7AoqJVwpqMjs/edit?usp=sharing
 
 ## Built With
 Bootstrap - CSS Framework
