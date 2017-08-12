@@ -39,7 +39,6 @@ module.exports = function(app) {
     db.Shop.create(req.body).then(function(dbShop) {
       idnum = dbShop.dataValues.id;
     });
-    window.location.href = "/additem/" + idnum
   })
 
   app.delete("/api/shops/:id", function(req, res) {
